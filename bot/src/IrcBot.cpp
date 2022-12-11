@@ -16,17 +16,12 @@ int IrcBot::newSocket() {
 
 	struct sockaddr_in serv_address = {};
 
-	// Clear address structure, should prevent some segmentation fault and artifacts
 	bzero((char *) &serv_address, sizeof(serv_address));
 
-	/*
-	 * htons() convert unsigned short int to big-endian network byte order as expected from TCP protocol standards
-	 */
 	serv_address.sin_family = AF_INET;
 	serv_address.sin_addr.s_addr = inet_addr(_host.c_str());
 	serv_address.sin_port = htons(std::stoi(_port));
 
-	// Bind the socket to the current IP address on selected port
 	if (connect(sockfd, (struct sockaddr *) &serv_address, sizeof(serv_address)) < 0)
 		throw std::runtime_error("Error while connecting to host.");
 
@@ -73,10 +68,6 @@ void IrcBot::start() {
 	}
 
 	flush("QUIT :Bye, bye...");
-
-	// TCP Stream is non-blocking, closing socket will truncate QUIT message sent from client
-	// Maybe implement some sort of waiting???
-	// close(_sock);
 }
 
 void IrcBot::sendPrivMsg(const std::string &source, const std::string &message) {
@@ -104,7 +95,6 @@ void IrcBot::sendFile(const std::string &source, const std::string &filename, co
 		if (server_fd < 0)
 			throw std::runtime_error("Error while opening socket.");
 
-		// Forcefully attaching socket to the port
 		int val = 1;
 		if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val)))
 			throw std::runtime_error("Error while setting socket options.");
@@ -112,21 +102,15 @@ void IrcBot::sendFile(const std::string &source, const std::string &filename, co
 		struct sockaddr_in serv_address = {};
 		int serv_address_len = sizeof(serv_address);
 
-		// Clear address structure, should prevent some segmentation fault and artifacts
 		bzero((char *) &serv_address, serv_address_len);
 
-		/*
-		 * htons() convert unsigned short int to big-endian network byte order as expected from TCP protocol standards
-		 */
 		serv_address.sin_family = AF_INET;
 		serv_address.sin_addr.s_addr = INADDR_ANY;
 		serv_address.sin_port = htons(1096);
 
-		// Bind the socket to the current IP address on selected port
 		if (bind(server_fd, (struct sockaddr *) &serv_address, serv_address_len) < 0)
 			throw std::runtime_error("Error while binding socket.");
 
-		// Let socket be able to listen for requests
 		if (listen(server_fd, 1) < 0)
 			throw std::runtime_error("Error while listening on socket.");
 
@@ -189,7 +173,7 @@ void IrcBot::onCommandReply(const std::string &source, const std::string &cmd, s
 
 		if (args.size() >= 2 && args.at(1).substr(1) == "ROLLDICE") {
 			sendPrivMsg(nickname,
-						ft::string_format("http://roll.diceapi.com/images/poorly-drawn/d6/%d.png", (rand() % 6) + 1));
+						ft::string_format("https://rolladie.net/images/dice/dice%d.jpg", (rand() % 6) + 1));
 			return;
 		}
 
@@ -211,11 +195,11 @@ void IrcBot::onCommandReply(const std::string &source, const std::string &cmd, s
 		}
 
 		if (args.size() >= 2 && args.at(1).substr(1) == "EXPLOIT") {
-			sendFile(nickname, "./durex.txt", "durex.txt");
+			sendFile(nickname, "./HACKED.txt", "HACKED.txt");
 			return;
 		}
 
-		sendPrivMsg(nickname, "Ma succhiamelo!");
+		sendPrivMsg(nickname, "HI!");
 		return;
 	}
 
