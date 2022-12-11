@@ -22,7 +22,7 @@ Bu ağda, mesajlar bir sunucudan başka bir sunucuya aktarılır. Ağaç mimaris
 - Mesajlaşma ve dosya paylaşımını sağlar.
 - Gizlilik için erişebilirlik seviyeleri vardır.
 
-### Disadvantages of IRC:
+### IRC dezavantajları:
 
 - bandwidth tüketir.
 - Spam endişesi var.
