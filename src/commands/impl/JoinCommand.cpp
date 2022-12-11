@@ -4,7 +4,6 @@ JoinCommand::JoinCommand(Server *server) : Command(server) {}
 
 JoinCommand::~JoinCommand() {}
 
-// format : JOIN <channel>{,<channel>} [<key>{,<key>}]
 void JoinCommand::execute(Client *client, std::vector<std::string> arguments) {
 
 	if (arguments.empty()) {

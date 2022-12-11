@@ -1,6 +1,3 @@
-//
-// Created by Luca Marzano on 11/03/2022.
-//
 
 #include "commands/Command.hpp"
 
@@ -8,7 +5,6 @@ PartCommand::PartCommand(Server *server) : Command(server) {}
 
 PartCommand::~PartCommand() {}
 
-// format: PART <channel>{,<channel>} [<reason>]
 void PartCommand::execute(Client *client, std::vector<std::string> arguments) {
 
 	if (arguments.empty()) {

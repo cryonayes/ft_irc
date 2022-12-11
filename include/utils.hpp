@@ -53,4 +53,4 @@ static inline void ft_log(const std::string &message) {
 	std::cout << "[" << str << "] " << message << std::endl;
 };
 
-#endif //FT_IRC_UTILS_HPP
+#endif

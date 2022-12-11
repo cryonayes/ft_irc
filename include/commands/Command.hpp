@@ -132,4 +132,4 @@ public:
 	void execute(Client *client, std::vector<std::string> arguments);
 };
 
-#endif // COMMAND_HPP
+#endif

@@ -1,6 +1,4 @@
-//
-// Created by Roberto Boldini on 3/9/22.
-//
+
 #ifndef FT_IRC_CHANNEL_HPP
 # define FT_IRC_CHANNEL_HPP
 
@@ -50,4 +48,4 @@ public:
 
 };
 
-#endif //FT_IRC_CHANNEL_HPP
+#endif

@@ -12,9 +12,6 @@ std::string Client::getPrefix() const {
 }
 
 void Client::write(const std::string &message) const {
-
-	//std::cout << "-> " << message << std::endl;
-
 	std::string buffer = message + "\r\n";
 	if (send(_fd, buffer.c_str(), buffer.length(), 0) < 0)
 		throw std::runtime_error("Error while sending message to client.");

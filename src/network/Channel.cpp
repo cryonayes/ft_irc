@@ -1,6 +1,3 @@
-//
-// Created by Roberto Boldini on 3/9/22.
-//
 
 #include "network/Channel.hpp"
 
@@ -42,7 +39,6 @@ void Channel::removeClient(Client *client) {
 	client->setChannel(NULL);
 
 	if (_clients.empty()) {
-		//TODO: free Channel* and remove from _channels in Server
 		return;
 	}
 

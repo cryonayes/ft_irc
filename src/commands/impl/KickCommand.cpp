@@ -4,7 +4,6 @@ KickCommand::KickCommand(Server *server) : Command(server) {}
 
 KickCommand::~KickCommand() {}
 
-// format: KICK <channel> <user> *( "," <user> ) [<comment>]
 void KickCommand::execute(Client *client, std::vector<std::string> arguments) {
 
 	if (arguments.size() < 2) {

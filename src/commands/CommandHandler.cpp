@@ -2,14 +2,14 @@
 
 CommandHandler::CommandHandler(Server *server) : _server(server)
 {
-	_commands["PASS"] = new PassCommand(_server, false); // Sunucuya bağlanırken şifre ver
-	_commands["NICK"] = new NickCommand(_server, false); // Nick gir
-	_commands["USER"] = new UserCommand(_server, false); // Kayıt ol
-	_commands["QUIT"] = new QuitCommand(_server, false); // Çıkış yap
+	_commands["PASS"] = new PassCommand(_server, false);
+	_commands["NICK"] = new NickCommand(_server, false);
+	_commands["USER"] = new UserCommand(_server, false);
+	_commands["QUIT"] = new QuitCommand(_server, false);
 
 	_commands["PING"] = new PingCommand(_server);
 	_commands["PONG"] = new PongCommand(_server);
-	_commands["JOIN"] = new JoinCommand(_server); // Bir kanala giriş yapar
+	_commands["JOIN"] = new JoinCommand(_server);
 	_commands["MODE"] = new ModeCommand(_server);
 	_commands["PART"] = new PartCommand(_server);
 	_commands["KICK"] = new KickCommand(_server);

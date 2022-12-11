@@ -1,6 +1,4 @@
-//
-// Created by Roberto Boldini on 3/11/22.
-//
+
 #include "commands/Command.hpp"
 
 QuitCommand::QuitCommand(Server *server, bool authRequired) : Command(server, authRequired) {}
@@ -13,5 +11,4 @@ void QuitCommand::execute(Client *client, std::vector<std::string> arguments) {
 	reason = reason.at(0) == ':' ? reason.substr(1) : reason;
 
 	client->write(RPL_QUIT(client->getPrefix(), reason));
-	//_server->onClientDisconnect(client->getFD());
 }

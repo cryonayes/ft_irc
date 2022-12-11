@@ -13,7 +13,7 @@ void ModeCommand::execute(Client *client, std::vector<std::string> arguments) {
 
 	std::string target = arguments.at(0);
 
-	Channel *channel = _server->getChannel(target); //MODE on clients not implemented
+	Channel *channel = _server->getChannel(target);
 	if (!channel) {
 		client->reply(ERR_NOSUCHCHANNEL(client->getNickname(), target));
 		return;

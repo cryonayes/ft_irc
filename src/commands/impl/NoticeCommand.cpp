@@ -7,7 +7,6 @@ NoticeCommand::~NoticeCommand() {};
 void NoticeCommand::execute(Client *client, std::vector<std::string> arguments) {
 
 	if (arguments.size() < 2 || arguments[0].empty() || arguments[1].empty()) {
-		//client->reply(ERR_NEEDMOREPARAMS(client->getNickname(), "NOTICE"));
 		return;
 	}
 
@@ -24,7 +23,6 @@ void NoticeCommand::execute(Client *client, std::vector<std::string> arguments) 
 
 		Channel *channel = client->getChannel();
 		if (!channel) {
-			//client->reply(ERR_NOSUCHCHANNEL(client->getNickname(), target));
 			return;
 		}
 
@@ -48,7 +46,6 @@ void NoticeCommand::execute(Client *client, std::vector<std::string> arguments) 
 
 	Client *dest = _server->getClient(target);
 	if (!dest) {
-		//client->reply(ERR_NOSUCHNICK(client->getNickname(), target));
 		return;
 	}
 

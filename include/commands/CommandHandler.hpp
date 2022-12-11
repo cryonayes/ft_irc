@@ -26,4 +26,4 @@ public:
 	void invoke(Client *client, const std::string &message);
 };
 
-#endif // FT_IRC_COMMANDHANDLER_HPP
+#endif
